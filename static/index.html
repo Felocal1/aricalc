@@ -18,6 +18,79 @@
 
     <main class="layout">
 
+        <!-- ============ PERSONAGEM (robô contador) ============ -->
+        <!-- Um mascote vetorial (SVG) criado com CSS/SVG, ao lado da
+             calculadora. O braço direito fica apontando para ela e o
+             braço inteiro balança de leve, como quem diz "usa aí!". -->
+        <div class="personagem" id="personagem" title="Contador, o robô da AriCalc">
+            <svg class="robot-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" role="img" aria-label="Robô contador apontando para a calculadora">
+
+                <!-- sombra no chão -->
+                <ellipse cx="100" cy="250" rx="56" ry="8" fill="#00000018"/>
+
+                <!-- pernas -->
+                <g class="pPernas">
+                    <rect x="66" y="208" width="28" height="36" rx="12" fill="#1a237e"/>
+                    <rect x="106" y="208" width="28" height="36" rx="12" fill="#1a237e"/>
+                    <rect x="66" y="232" width="28" height="10" rx="5" fill="#7986cb"/>
+                    <rect x="106" y="232" width="28" height="10" rx="5" fill="#7986cb"/>
+                </g>
+
+                <!-- braço que descansa (lado esquerdo) -->
+                <g class="pBracoDescanso">
+                    <rect x="18" y="152" width="44" height="17" rx="8.5" fill="#303f9f"/>
+                    <circle cx="22" cy="164" r="9" fill="#7986cb"/>
+                </g>
+
+                <!-- corpo gordinho -->
+                <g class="pCorpo">
+                    <rect x="56" y="118" width="88" height="102" rx="32" fill="#303f9f"/>
+                    <!-- painel branco da barriga -->
+                    <rect x="72" y="140" width="56" height="60" rx="16" fill="#ffffff"/>
+                    <!-- desenho de calculadora no painel -->
+                    <rect x="86" y="152" width="28" height="36" rx="4" fill="#e8eaf6"/>
+                    <rect x="91" y="158" width="18" height="3" rx="1.5" fill="#1a237e"/>
+                    <text x="99" y="180" text-anchor="middle" font-size="9" font-family="Arial" font-weight="bold" fill="#1a237e">+=</text>
+                </g>
+
+                <!-- pescoço -->
+                <rect x="88" y="108" width="24" height="16" rx="6" fill="#1a237e"/>
+
+                <!-- cabeça careca -->
+                <g class="pCabeca">
+                    <circle cx="100" cy="78" r="48" fill="#303f9f"/>
+                    <!-- orelhas -->
+                    <circle cx="50" cy="86" r="9" fill="#1a237e"/>
+                    <circle cx="150" cy="86" r="9" fill="#1a237e"/>
+                    <!-- rosto -->
+                    <ellipse cx="100" cy="90" rx="39" ry="36" fill="#ffffff"/>
+                    <!-- óculos -->
+                    <g fill="none" stroke="#263238" stroke-width="4.5">
+                        <circle cx="79" cy="88" r="11"/>
+                        <circle cx="121" cy="88" r="11"/>
+                        <path d="M90 88 H110"/>
+                    </g>
+                    <!-- olhos -->
+                    <circle cx="79" cy="88" r="4" fill="#263238"/>
+                    <circle cx="121" cy="88" r="4" fill="#263238"/>
+                    <!-- bochechas -->
+                    <circle cx="66" cy="103" r="4.5" fill="#ff8a80"/>
+                    <circle cx="134" cy="103" r="4.5" fill="#ff8a80"/>
+                    <!-- sorriso -->
+                    <path d="M89 103 Q100 113 111 103" stroke="#263238" stroke-width="3" fill="none" stroke-linecap="round"/>
+                </g>
+
+                <!-- braço que aponta para a calculadora (lado direito) -->
+                <!-- A classe usa transform-origin no ombro: a animação
+                     sobe e desce o braço, como a acenar "vem cá!". -->
+                <g class="braco-apontando">
+                    <rect x="126" y="136" width="46" height="16" rx="8" fill="#303f9f"/>
+                    <path d="M176 136 L198 130 L188 152 Z" fill="#7986cb"/>
+                </g>
+
+            </svg>
+        </div>
+
         <!-- ============ CALCULADORA ============ -->
         <section class="painel-calculadora">
 

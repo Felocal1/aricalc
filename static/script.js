@@ -140,6 +140,19 @@ function apagarDigito() {
     atualizarTela();
 }
 
+// ---------------------------------------------------------------------
+// Personagem — reação do robô contador
+// ---------------------------------------------------------------------
+
+/** Faz o robô dar um pulinho de comemoração quando um cálculo termina. */
+function comemorar() {
+    const personagem = document.getElementById("personagem");
+    // Remove a classe para poder reiniciar a animação do zero.
+    personagem.classList.remove("comemora");
+    void personagem.offsetWidth;      // "força" o navegador a reaplicar
+    personagem.classList.add("comemora");
+}
+
 /** Envia o cálculo para o servidor e mostra o resultado. */
 async function calcular(a, b, operacao) {
     mostrarAviso("");
@@ -155,6 +168,7 @@ async function calcular(a, b, operacao) {
         telaExpressao.textContent = dados.expressao + " =";
         iniciarNovoNumero = true;
         atualizarTela();
+        comemorar();                    // robô comemora!
         await carregarHistorico();      // o servidor registrou a operação
         await atualizarFaixaMemoria();  // nada muda aqui, mas é gratuito
     } catch (erro) {
@@ -248,6 +262,7 @@ async function apertarCientifica(funcao) {
         telaExpressao.textContent = dados.expressao + " =";
         iniciarNovoNumero = true;
         atualizarTela();
+        comemorar();                    // robô comemora!
         await carregarHistorico();
     } catch (erro) {
         mostrarAviso(erro.message);
