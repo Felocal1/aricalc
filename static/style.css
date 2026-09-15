@@ -1,0 +1,279 @@
+/* =====================================================================
+   style.css — Estilo visual da AriCalc web.
+
+   As cores foram escolhidas pensando em contraste e leitura fácil:
+     - fundo escuro no display (tela), claro nos botões;
+     - botões coloridos para cada TIPO de função (número, operador,
+       memória, científica) — assim o aluno identifica visualmente
+       cada família de operações.
+   ===================================================================== */
+
+:root {
+    /* Paleta da calculadora */
+    --azul-escuro: #1a237e;
+    --azul-medio:  #303f9f;
+    --azul-claro:  #e8eaf6;
+    --laranja:     #ff6d00;
+    --verde:       #2e7d32;
+    --cinza:       #eceff1;
+    --texto:       #263238;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(160deg, #f5f7fa, #e0e6ee);
+    color: var(--texto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Cabeçalho e rodapé                                                 */
+/* ------------------------------------------------------------------ */
+
+header {
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
+
+header h1 {
+    color: var(--azul-escuro);
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+}
+
+header h1 small {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--azul-medio);
+}
+
+.subtitulo {
+    font-size: 0.9rem;
+    color: #546e7a;
+    margin-top: 0.3rem;
+}
+
+code {
+    background: #263238;
+    color: #ffd54f;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+footer {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #546e7a;
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+footer a {
+    color: var(--azul-medio);
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout em duas colunas: calculadora + histórico                    */
+/* ------------------------------------------------------------------ */
+
+.layout {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 720px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.painel-calculadora {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+    width: 360px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Display (a "tela" da calculadora)                                  */
+/* ------------------------------------------------------------------ */
+
+.tela {
+    background: var(--azul-escuro);
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    text-align: right;
+    min-height: 84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tela-expressao {
+    font-size: 0.95rem;
+    color: #b3c0ff;
+    word-break: break-all;
+}
+
+.tela-resultado {
+    font-size: 2rem;
+    word-break: break-all;
+}
+
+/* ------------------------------------------------------------------ */
+/* Faixa de memória                                                   */
+/* ------------------------------------------------------------------ */
+
+.faixa-memoria {
+    font-size: 0.85rem;
+    color: var(--azul-medio);
+    text-align: right;
+    margin: 0.5rem 0 0.2rem;
+    min-height: 1.2em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Linha científica (funções de um só número)                         */
+/* ------------------------------------------------------------------ */
+
+.linha-ciencia {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.3rem;
+    margin: 0.4rem 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Grade principal de botões                                          */
+/* ------------------------------------------------------------------ */
+
+.grade-botoes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.45rem;
+}
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.05s ease, filter 0.1s ease;
+    color: var(--texto);
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn:hover {
+    filter: brightness(1.06);
+}
+
+/* Famílias de botões (cores = significado) */
+.btn.numero   { background: var(--cinza); }
+.btn.operador { background: var(--laranja); color: #fff; }
+.btn.ciencia  { background: var(--azul-claro); color: var(--azul-escuro); font-size: 0.95rem; }
+.btn.funcao   { background: #cfd8dc; }
+.btn.memoria  { background: #e0e0e0; font-size: 0.9rem; }
+.btn.igual    { background: var(--verde); color: #fff; font-size: 1.3rem; }
+
+/* ------------------------------------------------------------------ */
+/* Mensagens de erro/aviso                                            */
+/* ------------------------------------------------------------------ */
+
+.aviso {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    min-height: 1.2em;
+    color: #c62828;
+    font-weight: 600;
+}
+
+/* ------------------------------------------------------------------ */
+/* Painel de histórico                                                */
+/* ------------------------------------------------------------------ */
+
+.painel-historico {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    padding: 1rem;
+    width: 300px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cabecalho-historico {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.cabecalho-historico h2 {
+    font-size: 1.1rem;
+    color: var(--azul-escuro);
+}
+
+.cabecalho-historico button {
+    background: none;
+    border: 1px solid #c62828;
+    color: #c62828;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.cabecalho-historico button:hover {
+    background: #c62828;
+    color: #fff;
+}
+
+.lista-historico {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    max-height: 320px;
+}
+
+.lista-historico li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0.4rem;
+    border-bottom: 1px solid #eceff1;
+    font-size: 0.9rem;
+}
+
+.lista-historico .expressao {
+    color: #546e7a;
+}
+
+.lista-historico .resultado {
+    font-weight: 700;
+    color: var(--azul-escuro);
+}
+
+.lista-historico .vazio {
+    color: #90a4ae;
+    font-style: italic;
+    display: block;
+}

@@ -1,0 +1,29 @@
+# render.yaml — Definição do serviço web da AriCalc no Render.com
+#
+# Este arquivo é um "blueprint": a receita que o Render usa para
+# criar e publicar o serviço automaticamente a partir do repositório.
+#
+# COMO USAR (2 opções):
+#   Opção manual: No painel do Render, em "New > Web Service",
+#     conecte o repositório do GitHub e preencha exatamente as
+#     mesmas configurações abaixo (Build Command e Start Command).
+#
+#   Opção blueprint: em "New > Blueprint", aponte o repositório;
+#     o Render lê este arquivo e cria tudo sozinho.
+#
+# O que cada campo faz:
+#   type        : "web" = serviço que responde HTTP.
+#   runtime     : "python" = usa a versão do Python que o Render oferece.
+#   plan        : "free" = plano gratuito (instância dorme sem tráfego).
+#   buildCommand: roda na criação/redeploy (instala as dependências).
+#   startCommand: comando que INICIA o servidor quando o serviço sobe.
+#   autoDeploy  : todo push na branch main gera um novo deploy.
+
+services:
+  - type: web
+    name: aricalc
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn servidor:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true

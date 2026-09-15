@@ -1,0 +1,10 @@
+# Ambiente virtual (instalações locais de pacotes)
+.venv/
+venv/
+
+# Código compilado pelo Python
+__pycache__/
+*.pyc
+
+# Dados gerados em execução (histórico salvo da calculadora)
+historico.json

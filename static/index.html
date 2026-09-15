@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AriCalc — Calculadora na Web</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>AriCalc <small>na web</small></h1>
+        <p class="subtitulo">
+            Cada botão chama uma função do motor <code>calculadora/</code> via API.<br>
+            O navegador nunca calcula sozinho: ele pergunta para o servidor.
+        </p>
+    </header>
+
+    <main class="layout">
+
+        <!-- ============ CALCULADORA ============ -->
+        <section class="painel-calculadora">
+
+            <!-- Tela (display) -->
+            <div class="tela" id="tela">
+                <div class="tela-expressao" id="tela-expressao">&nbsp;</div>
+                <div class="tela-resultado" id="tela-resultado">0</div>
+            </div>
+
+            <!-- Faixa de memória -->
+            <div class="faixa-memoria" id="faixa-memoria" title="Valor guardado na memória (MR)">
+                Memória: <span id="valor-memoria">(vazia)</span>
+            </div>
+
+            <!-- Linha de funções científicas (aplicam direto ao número da tela) -->
+            <div class="linha-ciencia">
+                <button class="btn ciencia" data-funcao="raiz_quadrada" title="√x">√x</button>
+                <button class="btn ciencia" data-funcao="raiz_n_esima" title="ⁿ√x">ⁿ√x</button>
+                <button class="btn ciencia" data-funcao="logaritmo" title="log base 10">log</button>
+                <button class="btn ciencia" data-funcao="seno" title="seno em graus">sen</button>
+                <button class="btn ciencia" data-funcao="cosseno" title="cosseno em graus">cos</button>
+                <button class="btn ciencia" data-funcao="tangente" title="tangente em graus">tan</button>
+            </div>
+
+            <!-- Grade de botões -->
+            <div class="grade-botoes">
+
+                <button class="btn memoria" data-memoria="MC" title="Limpar memória">MC</button>
+                <button class="btn memoria" data-memoria="MR" title="Mostrar memória">MR</button>
+                <button class="btn memoria" data-memoria="M+" title="Somando na memória">M+</button>
+                <button class="btn memoria" data-memoria="M-" title="Subtrair da memória">M-</button>
+                <button class="btn memoria" data-memoria="MS" title="Guardar na memória">MS</button>
+
+                <button class="btn funcao" data-acao="C" title="Apagar tudo">C</button>
+                <button class="btn funcao" data-acao="backspace" title="Apagar último dígito">⌫</button>
+                <button class="btn operador" data-operador="potencia" title="x elevado a y">xʸ</button>
+                <button class="btn operador" data-operador="divisao" title="Dividir">÷</button>
+
+                <button class="btn numero" data-numero="7">7</button>
+                <button class="btn numero" data-numero="8">8</button>
+                <button class="btn numero" data-numero="9">9</button>
+                <button class="btn operador" data-operador="multiplicacao" title="Multiplicar">×</button>
+
+                <button class="btn numero" data-numero="4">4</button>
+                <button class="btn numero" data-numero="5">5</button>
+                <button class="btn numero" data-numero="6">6</button>
+                <button class="btn operador" data-operador="subtracao" title="Subtrair">−</button>
+
+                <button class="btn numero" data-numero="1">1</button>
+                <button class="btn numero" data-numero="2">2</button>
+                <button class="btn numero" data-numero="3">3</button>
+                <button class="btn operador" data-operador="soma" title="Somar">+</button>
+
+                <button class="btn numero" data-numero="0">0</button>
+                <button class="btn numero" data-numero=".">.</button>
+                <button class="btn igual" data-acao="igual" title="Calcular">=</button>
+            </div>
+
+            <!-- Mensagens para o usuário -->
+            <div class="aviso" id="aviso"></div>
+        </section>
+
+        <!-- ============ HISTÓRICO ============ -->
+        <aside class="painel-historico">
+            <div class="cabecalho-historico">
+                <h2>Histórico</h2>
+                <button id="limpar-historico" title="Apagar todo o histórico">Limpar</button>
+            </div>
+            <ul id="lista-historico" class="lista-historico">
+                <!-- os itens entram aqui via JavaScript -->
+            </ul>
+        </aside>
+
+    </main>
+
+    <footer>
+        <code>GET /api/historico</code> ·
+        <code>POST /api/calcular</code> ·
+        <code>POST /api/memoria/*</code> ·
+        experimente também a documentação interativa em <a href="/docs" target="_blank">/docs</a>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>

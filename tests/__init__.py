@@ -1,0 +1,1 @@
+"""Pacote de testes — arquivos aqui são descobertos pelo pytest."""
