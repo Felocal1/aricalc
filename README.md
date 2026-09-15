@@ -14,7 +14,7 @@ Uma calculadora completa construída como projeto de aprendizagem, separando o m
 python main.py
 ```
 
-### 2. Modo web (navegador)
+### 2. Modo web (navegador — local)
 
 A primeira vez é preciso instalar as dependências no ambiente virtual:
 
@@ -31,7 +31,17 @@ Depois, ligue o servidor:
 
 Abra no navegador: **http://127.0.0.1:8000**
 
-Experimente também a documentação interativa da API em **http://127.0.0.1:8000/docs**
+A documentação interativa da API fica em **http://127.0.0.1:8000/docs**
+
+### 3. Publicar na web (Render.com)
+
+1. Acesse [render.com](https://render.com) e faça login (conta gratuita).
+2. Clique em **"New +"** → **"Blueprint"**.
+3. Conecte a conta GitHub e selecione o repositório **aricalc**.
+4. O Render detecta o arquivo `render.yaml` e cria tudo automaticamente.
+5. Aguarde o primeiro deploy (1~2 min). A URL pública será algo como `https://aricalc.onrender.com`.
+
+> **Nota:** no plano gratuito, o serviço dorme após 15 minutos sem tráfego; na primeira visita ele leva ~30s para "acordar". O histórico de operações é volátil (reinicia a cada deploy).
 
 ## Como rodar os testes
 
@@ -41,13 +51,16 @@ python -m unittest tests.test_operacoes -v
 
 ---
 
-## Estrutura do projeto
+## Repositório
+
+**GitHub:** https://github.com/Felocal1/aricalc
 
 ```
 AriCalc/
 │
 ├── main.py                    # Interface 1: menu interativo no terminal
 ├── servidor.py                # Interface 2: API web (FastAPI)
+├── render.yaml                # Receita de publicação no Render.com
 ├── static/                    # Interface 2: páginas do navegador
 │   ├── index.html             #   estrutura da página
 │   ├── style.css              #   visual
